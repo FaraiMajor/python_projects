@@ -1,4 +1,4 @@
-tot = 0
-for i in [5, 4, 3, 2, 1]:
-    tot = tot + 1
-print(tot)
+for letter in 'Python':     # First Example
+    if letter == 'h':
+        break
+    print('Current Letter :', letter)
