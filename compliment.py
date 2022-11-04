@@ -13,3 +13,4 @@ def similar(a):
 
 
 similar()
+# farai mutukumira
