@@ -27,7 +27,7 @@ print("Your mission is to find the treasure.")
 
 
 def replay():
-    return input('Do you want to calculate tip again? Enter Yes or No: ').lower().startswith('y')
+    return input('Do you want to play again? Enter Yes or No: ').lower().startswith('y')
 
 
 while True:
