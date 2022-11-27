@@ -7,6 +7,10 @@ def replay():
     return input('Do you want to play again? Enter Yes or No: ').lower().startswith('y')
 
 
+print("Winning Rules of the Rock paper scissor game as follows: \n"
+      + "rock vs paper->paper wins \n"
+      + "rock vs scissor->rock wins \n"
+      + "paper vs scissor -> scissor wins \n")
 print("Game Options \n 0. rock \n 1. paper \n 2. scissors")
 while True:
     rock = '''
@@ -59,5 +63,5 @@ while True:
         print("It's a draw")
 
     if not replay():
-        print("GAME OVER!!!")
+        print("\nThanks for playing")
         break
