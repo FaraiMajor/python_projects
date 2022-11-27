@@ -74,4 +74,5 @@ while True:
         print("You win!")
 
     if not replay():
+        print("\nThanks for playing")
         break
