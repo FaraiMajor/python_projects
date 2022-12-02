@@ -4,21 +4,19 @@ def turn_right():
     turn_left()
 
 
-def jump(times):
-    i = 0
-    while i < times:
-        move()
-        turn_left()
-        move()
-        turn_right()
-        move()
-        turn_right()
-        move()
-        turn_left()
-        i += 1
+def jump():
+    move()
+    turn_left()
+    move()
+    turn_right()
+    move()
+    turn_right()
+    move()
+    turn_left()
 
 
-jump(6)
+repeat 6:
+    jump()
 
 
 ################################################################
