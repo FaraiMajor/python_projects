@@ -20,7 +20,7 @@ def replay():
     if res == 'y':
         game_play()
     else:
-        print('GAME OVER, Hope yout had fun')
+        print('GAME OVER, Hope you had fun')
         print(art.logo)
 
 
@@ -48,8 +48,13 @@ def welcome():
         print('Hi!', name, 'Please go through the rules of the game')
 
 
-def guess():
+def guess(let):
     letter = input("Guess a letter: ").lower()
+    alphabet = string.ascii_lowercase
+    if letter not in alphabet:
+        print('You are only allowed to enter letters. Please Try Again')
+    elif letter in let:
+        print('You have already guessed that letter before.Try again!')
     print(
         f"You have guessed the letter \"{letter}\"")
     return letter
@@ -58,30 +63,43 @@ def guess():
 def game_play():
 
     welcome()
-    alphabet = string.ascii_lowercase
-    my_choice = []
+
     letters_guessed = []
     chosen = chosen_word(words)
+    my_choice = []
+    my_choice = list('_' * len(chosen))
 
-    for i in range(len(chosen)):
-        my_choice.append("_")
-
-    lives = len(arts)
-    while lives > 0:
-        print('You have ' + str(lives) + ' tries')
+    # for i in range(len(chosen)):
+    #     my_choice.append("_")
+    count = 0
+    lives = 7
+    print(chosen)
+    while lives:
+        win = False
+        correct = False
+        print(f'You have {lives} lives')
+        my_guess = guess(letters_guessed)
         for i in range(len(chosen)):
-            if(chosen[i] == guess()):
-                print(f"letter \"{chosen[i]}\" is in the word")
-                my_choice[i] = guess()
-            else:
-                lives -= 1
-                print(arts[lives])
+            if(chosen[i] == my_guess):
+                my_choice[i] = my_guess
+                print(my_choice)
+                count += 1
+                correct = True
+        if not correct:
+            lives -= 1
+            letters_guessed.append(my_guess)
+            print(arts[lives])
 
-        if lives < 0:
+        if not lives:
+            print("You Lost")
+            print(f'The word is "{chosen}"')
             break
-        print(my_choice)
 
-        replay()
+        if count == len(chosen):
+            print(my_choice)
+            print("You Win")
+            break
+    replay()
 
 
 game_play()
