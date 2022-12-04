@@ -22,10 +22,11 @@ def replay():
         "Do you want to play again? Enter 'Y' for Yes or 'N' for No: ").lower()
 
     if res == 'y':
+        print(art.logo)
         game_play()
     else:
         print('GAME OVER, Hope you had fun')
-        print(art.logo)
+        print(art.over)
 
 # welcome screen to give a user name and print game rules
 
@@ -69,9 +70,11 @@ def guess(let):
     return letter
 
 
+welcome()
+
+
 def game_play():
     # call the welcome function to get the game running
-    welcome()
 
     # letter_guessed list saves all the letters the user has guessed and when user repeats the same letter a message will remind them
     letters_guessed = []
@@ -86,8 +89,8 @@ def game_play():
 
     # count keeps tracks of all the right words guessed
     count = 0
-    lives = 7
-    print(chosen)
+    lives = len(arts)
+
     print('The word contains', len(chosen), 'letters.')
     while lives:
         # this boolean track whether our guess is true or not in the loop.
@@ -111,7 +114,7 @@ def game_play():
             print(arts[lives])
 # when all lives are used then game is over
         if not lives:
-            print("You Lost")
+            print(art.lost)
             print(f'The word is "{chosen}"')
             break
 
@@ -119,7 +122,7 @@ def game_play():
         final_word = ''.join(my_choice)
         if count == len(chosen):
             if final_word == chosen:
-                print("You Win")
+                print(art.won)
                 print(final_word)
                 break
 
