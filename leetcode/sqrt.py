@@ -9,3 +9,4 @@ class Solution:
                     smaller, now = now, (now + bigger)//2
                 else:
                     bigger, now = now, (now + smaller)//2
+    mySqrt(4)
