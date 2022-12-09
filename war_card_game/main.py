@@ -1,5 +1,5 @@
 import random
-import conditions as art
+import arts as art
 
 # card options
 suits = ('Hearts', 'Diamonds', 'Spades', 'Clubs')
