@@ -59,11 +59,16 @@ class Hand:
         self.aces = 0    # add an attribute to keep track of aces
 
     def add_card(self, card):
-        pass
+        self.cards.append(card)
+        self.value += values[card.rank]
+
+        if card.rank == 'Ace':
+            self.aces += 1
 
     def adjust_for_ace(self):
-        pass
-
+        while self.value > 21 and self.aces:
+            self.value -= 10
+            self.aces -= 1
 # ******************************************************************************************
 
 
@@ -74,10 +79,10 @@ class Chips:
         self.bet = 0
 
     def win_bet(self):
-        pass
+         self.total += self.bet
 
     def lose_bet(self):
-        pass
+        self.total -= self.bet
 # ******************************************************************************************
 
 
