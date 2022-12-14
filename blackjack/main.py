@@ -10,16 +10,16 @@ values = {'Two': 2, 'Three': 3, 'Four': 4, 'Five': 5, 'Six': 6, 'Seven': 7, 'Eig
 playing = True
 
 
-def replay():
+# def replay():
 
-    res = input(
-        "Do you want to play again? Enter 'Y' for Yes or 'N' for No: ").lower()
+#     res = input(
+#         "Do you want to play again? Enter 'Y' for Yes or 'N' for No: ").lower()
 
-    if res == 'y':
-        game_play()
-    else:
-        print('GAME OVER, Hope you had fun')
-        print(art.over)
+#     if res == 'y':
+#         game_play()
+#     else:
+#         print('GAME OVER, Hope you had fun')
+#         print(art.over)
 # ******************************************************************************************
 
 
@@ -31,7 +31,7 @@ class Card:
         self.value = values[rank]
 
     def __str__(self):
-        return self.rank + ' of ' + self.suit
+        return int(self.value) + ' of ' + self.suit
 
 # ******************************************************************************************
 
@@ -86,58 +86,88 @@ class Chips:
 # ******************************************************************************************
 
 
-def take_bet():
-
-    pass
+def take_bet(chips):
+     while True:
+        try:
+            chips.bet = int(input('How many chips would you like to bet? '))
+        except ValueError:
+            print('Sorry, a bet must be an integer!')
+        else:
+            if chips.bet > chips.total:
+                print("Bet cannot be more than chips available")
+            else:
+                break
 
 # ******************************************************************************************
 
 
 def hit(deck, hand):
 
-    pass
+    hand.add_card(deck.deal())
+    hand.adjust_for_ace()
 # ******************************************************************************************
 
 
 def hit_or_stand(deck, hand):
     global playing  # to control an upcoming while loop
 
-    pass
+    while True:
+        x = input("Enter 'h' for HIT or 's' for STAND")
+        if x[0] == 'h':
+            hit(deck, hand)
+
+        elif x[0].lower() == 's':
+            print("Player stands. Dealer is playing.")
+            playing = False
+
+        else:
+            print("Sorry, please try again.")
+            continue
+        break
 
 # ******************************************************************************************
 
 
 def show_some(player, dealer):
-
-    pass
+    print("\nDealer's Hand:")
+    print(" <card hidden>")
+    print('', dealer.cards[1])
+    print("\nPlayer's Hand:", *player.cards, sep='\n ')
 
 # ******************************************************************************************
 
 
 def show_all(player, dealer):
+    print("\nDealer's Hand:", *dealer.cards, sep='\n ')
+    print("Dealer's Hand =", dealer.value)
+    print("\nPlayer's Hand:", *player.cards, sep='\n ')
+    print("Player's Hand =", player.value)
 
-    pass
 # ******************************************************************************************
 
 
-def player_busts():
-    pass
+def player_busts(player, dealer, chips):
+    print("Player busts!")
+    chips.lose_bet()
 
 
-def player_wins():
-    pass
+def player_wins(player, dealer, chips):
+    print("Player wins!")
+    chips.win_bet()
 
 
-def dealer_busts():
-    pass
+def dealer_busts(player, dealer, chips):
+    print("Dealer busts!")
+    chips.win_bet()
 
 
-def dealer_wins():
-    pass
+def dealer_wins(player, dealer, chips):
+    print("Dealer wins!")
+    chips.lose_bet()
 
 
-def push():
-    pass
+def push(player, dealer):
+    print("Dealer and Player tie! It's a push.")
 
 
 # ******************************************************************************************
