@@ -9,17 +9,6 @@ values = {'Two': 2, 'Three': 3, 'Four': 4, 'Five': 5, 'Six': 6, 'Seven': 7, 'Eig
 
 playing = True
 
-
-def replay():
-
-    res = input(
-        "Do you want to play again? Enter 'Y' for Yes or 'N' for No: ").lower()
-
-    if res == 'y':
-        game_play()
-    else:
-        print('GAME OVER, Hope you had fun')
-        print(art.over)
 # ******************************************************************************************
 
 
@@ -105,6 +94,7 @@ def hit(deck, hand):
 
     hand.add_card(deck.deal_one())
     hand.adjust_for_ace()
+
 # ******************************************************************************************
 
 
