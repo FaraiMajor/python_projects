@@ -1,10 +1,8 @@
 # higher lower sart
 import arts as art
-import game_data as game
+from game_data import data
 import random
 import os
-
-data = game.data
 
 
 def random_selection():
@@ -41,7 +39,7 @@ def game():
             selection_b = random_selection()
 
         print(f"Compare A: {format_data(selection_a)}.")
-        print('VS'.center(40))
+        print(f'{art.vs}'.center(40))
         print(f"Against B: {format_data(selection_b)}.")
 
         guess = input("Who has more followers? Type 'A' or 'B': ").lower()
@@ -52,7 +50,7 @@ def game():
         selection_b_count = selection_b['follower_count']
         is_correct = check_guess(guess, selection_a_count, selection_b_count)
 
-        # os.system('clear')
+        os.system('clear')
         print(art.logo)
         if is_correct:
             score += 1
