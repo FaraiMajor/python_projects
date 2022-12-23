@@ -10,6 +10,7 @@ def random_selection():
 
 
 def format_data(selection):
+    """Format account into printable format: name, description and country"""
     name = selection['name']
     description = selection['description']
     country = selection['country']
@@ -17,6 +18,9 @@ def format_data(selection):
 
 
 def check_guess(guess, a_followers, b_followers):
+    """Checks followers against user's guess 
+  and returns True if they got it right.
+  Or False if they got it wrong."""
     if a_followers > b_followers:
         return guess == 'a'
     else:
