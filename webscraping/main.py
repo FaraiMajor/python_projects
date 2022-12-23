@@ -17,15 +17,19 @@ for item in soup.select(".toctext"):
 for item in site_para:
     f.write(f'{item.getText()}\n')
 
-link = soup.select('a')
-for i in link:
-    print(i)
-
-for item in soup.find_all('img'):
-    print(item['src'])
-
+for item in soup.find_all('a', href=True):
+    f.write(item['href'])
 f.close()
+grace = soup.select('.thumbimage')[0]
+print(grace['src'])
 
+image_link = requests.get(
+    'https://upload.wikimedia.org/wikipedia/commons/thumb/b/be/Deep_Blue.jpg/220px-Deep_Blue.jpg')
+print(image_link.content)
+h = open('computer.jpg', 'wb')
+
+h.write(image_link.content)
+h.close()
 
 # res = requests.get("https://en.wikipedia.org/wiki/Deep_Blue_(chess_computer)")
 # soup = BeautifulSoup(res.text, 'lxml')
