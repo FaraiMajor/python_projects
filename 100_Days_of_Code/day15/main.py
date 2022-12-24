@@ -27,9 +27,9 @@ MENU = {
 }
 
 resources = {
-    "water": 300,
-    "milk": 200,
-    "coffee": 100,
+    "water": 700,
+    "milk": 400,
+    "coffee": 200,
 }
 
 
@@ -54,15 +54,12 @@ def transaction(coins, drink_cost):
     if coins >= drink_cost:
         change = round(coins - drink_cost, 2)
         print(f'Here is your ${change} in change.')
+        global sales
+        sales += drink_cost
         return True
     else:
         print('Sorry thats not enough money. Money Refunded')
         return False
-
-
-def sales(drink, drink_cost):
-    drink_cost += drink['cost']
-    return drink_cost
 
 
 def dispense_coffee(drink_name, customer_order):
