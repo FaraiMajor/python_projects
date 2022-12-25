@@ -65,7 +65,7 @@ def transaction(coins, drink_cost):
 def dispense_coffee(drink_name, customer_order):
     for item in customer_order:
         resources[item] -= customer_order[item]
-    print(f'Here is your {drink_name}. Enjoy!')
+    print(f'Here is your {drink_name}. ☕Enjoy!')
 
 
 print(logo)
