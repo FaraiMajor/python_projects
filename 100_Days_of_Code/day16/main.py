@@ -12,8 +12,7 @@ print(logo)
 is_on = True
 while is_on:
 
-    print(f"MENU SELECTION: \n{menu.get_items()}")
-    choice = input('What would you like? (espresso/latte/cappuccino/):')
+    choice = input(f'What would you like? ({menu.get_items()}): ')
     if choice == 'off':
         is_on = False
     elif choice == 'report':
