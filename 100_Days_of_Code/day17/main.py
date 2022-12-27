@@ -11,5 +11,7 @@ for question in question_data:
     new_question = Question(q_text, q_ans)
     question_bank.append(new_question)
 
-brain = QuizBrain(question_bank)
-next = brain.next_question()
+quiz = QuizBrain(question_bank)
+
+while quiz.has_questions():
+    quiz.next_question()
