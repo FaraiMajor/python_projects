@@ -2,9 +2,21 @@ from turtle import Screen, Turtle
 
 
 tim_the_turtle = Turtle()
-tim_the_turtle.shape('turtle')
-tim_the_turtle.color("red")
-tim_the_turtle.forward(100)
+tim_the_turtle.hideturtle()
+tim_the_turtle.pen(pencolor="gold", pensize=3)
+# tim_the_turtle.shape('turtle')
+tim_the_turtle.color("gold4")
+
+tim_the_turtle.begin_fill()
+for _ in range(5):
+    tim_the_turtle.forward(-300)
+    tim_the_turtle.right(144)
+    for _ in range(5):
+        tim_the_turtle.forward(50)
+        tim_the_turtle.right(144)
+        tim_the_turtle.fillcolor("gold4")
+
+tim_the_turtle.end_fill()
 tim_the_turtle.speed("slow")
 screen = Screen()
 
