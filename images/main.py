@@ -15,12 +15,12 @@ x = halfway - 200
 w = halfway + 200
 y = 800
 h = hei
-print(mac.crop((x, y, w, h)).show())
+# print(mac.crop((x, y, w, h)).show())
 
 pencils = Image.open('images/pencils.jpg')
 
 
-print(pencils.size)
+# print(pencils.size)
 
 width, height = pencils.size
 
@@ -31,7 +31,7 @@ y = 0
 w = width / 3
 h = height / 10
 
-print(pencils.crop((x, y, w, h)).show())
+# print(pencils.crop((x, y, w, h)).show())
 
 # bottom pencils
 
@@ -40,4 +40,9 @@ y = 0
 
 #  these are coordinates and so h iss now 1300
 
-print(pencils.crop((x, 1100, w, height)).show())
+# print(pencils.crop((x, 1100, w, height)).show())
+
+red = Image.open("images/red_color.jpg")
+blue = Image.open("images/blue_color.png")
+print(red.show())
+print(blue.show())
