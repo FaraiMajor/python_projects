@@ -52,6 +52,25 @@ def get_slot_spin(rows, cols, symbols):
     return columns
 
 
+"""
+Use Matrix transpose to convert our list into rows. As is right now our reel looks like this:
+columns = [[a,a,a]                                                     [[a,b,c]
+           [b,b,b]                                                     [a,b,c]
+           [c,c,c]] but we want the first list to represent a column   [a,b,c]]
+now each list is in a column and the reel in rows
+"""
+
+
+def print_slot_machine(columns):
+    result = [[0, 0, 0], [0, 0, 0], [0, 0, 0]]
+    for row in range(len(columns)):
+        for col in range(len(columns[0])):
+            result[col][row] = columns[row][col]
+
+    for reels in result:
+        print(reels[0], "|", reels[1], "|", reels[2])
+
+
 def deposit():
     """reponsible for collecting user input which will be their deposit"""
     while True:
@@ -119,6 +138,9 @@ def main():
             break
 
     print(f"You are betting ${bet} on {lines}. Total bet is: ${total_bet}")
+
+    slots = get_slot_spin(ROWS, COLS, symbol_count)
+    print_slot_machine(slots)
 
 
 main()
