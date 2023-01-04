@@ -1,4 +1,5 @@
 import random
+from art import logo, over
 
 MAX_LINES = 3
 MAX_BET = 100
@@ -10,7 +11,7 @@ COLS = 3
 # we have 4 symbols in the slot and here we assign quantity for each symbol so A is most valuable
 symbol_count = {
     "\U0001F351": 3,
-    "\U0001F34E": 4,
+    "\U0001F34E": 5,
     "\U0001F34F": 6,
     "\U0001F34B": 8
 }
@@ -186,6 +187,7 @@ def spin(balance):
 
 
 def main():
+    print(logo)
     balance = deposit()
     while True:
         print(f"Current balance is ${balance}")
@@ -194,8 +196,8 @@ def main():
             break
         balance += spin(balance)
 
-    print(f"You are left with ${balance}")
-    print("\U0001F606")
+    print(f"You are left with ${balance}\n")
+    print(over)
 
 
 main()
