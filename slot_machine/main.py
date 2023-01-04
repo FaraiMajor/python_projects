@@ -9,11 +9,38 @@ COLS = 3
 
 # we have 4 symbols in the slot and here we assign quantity for each symbol so A is most valuable
 symbol_count = {
-    'A': 2,
-    'B': 4,
-    'C': 6,
-    'D': 8
+    "\U0001F351": 3,
+    "\U0001F34E": 4,
+    "\U0001F34F": 6,
+    "\U0001F34B": 8
 }
+symbol_value = {
+    "\U0001F351": 5,
+    "\U0001F34E": 4,
+    "\U0001F34F": 3,
+    "\U0001F34B": 2
+}
+
+# ----------------------------------------------------------------------------------------------
+
+
+def check_winnings(columns, lines, bet, values):
+    winnings = 0
+    winning_lines = []
+    for line in range(lines):
+        """column[0][line] is so we always start on the first item and check the entire row"""
+        symbol = columns[0][line]
+        for column in columns:
+            # check symbols in the column based on the row we are on
+            sysmbol_to_check = column[line]
+            if symbol != sysmbol_to_check:
+                break
+        else:
+            winnings += values[symbol] * bet
+            winning_lines.append(line + 1)
+
+    return winnings, winning_lines
+    # ----------------------------------------------------------------------------------------------
 
 
 def get_slot_spin(rows, cols, symbols):
@@ -51,8 +78,11 @@ def get_slot_spin(rows, cols, symbols):
 
     return columns
 
+# ----------------------------------------------------------------------------------------------
+
 
 """
+exaplanation for printing slot machine function
 Use Matrix transpose to convert our list into rows. As is right now our reel looks like this:
 columns = [[a,a,a]                                                     [[a,b,c]
            [b,b,b]                                                     [a,b,c]
@@ -68,8 +98,10 @@ def print_slot_machine(columns):
             result[col][row] = columns[row][col]
 
     for reels in result:
-        print(reels[0], "|", reels[1], "|", reels[2])
+        print(reels[0], " | ", reels[1], " | ", reels[2])
 
+
+# ----------------------------------------------------------------------------------------------
 
 def deposit():
     """reponsible for collecting user input which will be their deposit"""
@@ -86,6 +118,8 @@ def deposit():
             print("Please enter a number.")
 
     return amount
+
+# ----------------------------------------------------------------------------------------------
 
 
 def get_lines():
@@ -107,6 +141,8 @@ def get_lines():
 
 #  player places their bet here
 
+# ----------------------------------------------------------------------------------------------
+
 
 def get_bet():
     while True:
@@ -123,9 +159,11 @@ def get_bet():
 
     return amount
 
+# ----------------------------------------------------------------------------------------------
 
-def main():
-    balance = deposit()
+
+def spin(balance):
+
     lines = get_lines()
     while True:
         bet = get_bet()
@@ -141,6 +179,23 @@ def main():
 
     slots = get_slot_spin(ROWS, COLS, symbol_count)
     print_slot_machine(slots)
+    winnings, winnings_lines = check_winnings(slots, lines, bet, symbol_value)
+    print(f"You won ${winnings}.")
+    print(f"You won on lines", *winnings_lines)
+    return winnings - total_bet
+
+
+def main():
+    balance = deposit()
+    while True:
+        print(f"Current balance is ${balance}")
+        answer = input("Press enter to play (q to quit).")
+        if answer == "q":
+            break
+        balance += spin(balance)
+
+    print(f"You are left with ${balance}")
+    print("\U0001F606")
 
 
 main()
