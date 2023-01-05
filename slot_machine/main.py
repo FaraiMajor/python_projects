@@ -2,7 +2,7 @@ import random
 from art import logo, over
 
 MAX_LINES = 3
-MAX_BET = 100
+MAX_BET = 1000
 MIN_BET = 1
 
 ROWS = 3
@@ -33,8 +33,8 @@ def check_winnings(columns, lines, bet, values):
         symbol = columns[0][line]
         for column in columns:
             # check symbols in the column based on the row we are on
-            sysmbol_to_check = column[line]
-            if symbol != sysmbol_to_check:
+            symbol_to_check = column[line]
+            if symbol != symbol_to_check:
                 break
         else:
             winnings += values[symbol] * bet
@@ -147,19 +147,17 @@ def get_lines():
 
 def get_bet():
     while True:
-        amount = input("How much would you like to bet on each line? $")
-        # authenticate if the input is a digit
+        amount = input("What would you like to bet on each line? $")
         if amount.isdigit():
             amount = int(amount)
-            if amount > 0:
+            if MIN_BET <= amount <= MAX_BET:
                 break
             else:
-                print(f"Amount must be between {MIN_BET} - {MAX_BET}.")
+                print(f"Amount must be between ${MIN_BET} - ${MAX_BET}.")
         else:
             print("Please enter a number.")
 
     return amount
-
 # ----------------------------------------------------------------------------------------------
 
 
