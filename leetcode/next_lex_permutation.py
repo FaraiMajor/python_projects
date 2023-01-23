@@ -20,7 +20,8 @@ def rearrangeWord(word):
     # Swap the pivot with the rightmost character
     word_list[i-1], word_list[j] = word_list[j], word_list[i-1]
     # Reverse the sufix
-    word_list[i:] = word_list[len(word_list)-1:i-1:-1]
+    # word_list[i:] = word_list[len(word_list)-1:i-1:-1]
+    word_list[i:] = reversed(word_list[i:])
     return ''.join(word_list)
 
 
