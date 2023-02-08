@@ -16,7 +16,6 @@ def areAlmostEquivalent(s, t):
             result.append("YES")
         else:
             result.append("NO")
-    print(string1)
     return result
 
 

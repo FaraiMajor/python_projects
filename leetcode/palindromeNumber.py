@@ -18,4 +18,12 @@ class Solution:
 
 
 palindrome = Solution(121)
-print(palindrome.isPalindrome())
+# print(palindrome.isPalindrome())
+
+
+def palindrome(str):
+
+    return str == "".join(reversed(str))
+
+
+print(palindrome("ana"))
